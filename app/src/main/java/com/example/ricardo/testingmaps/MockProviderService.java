@@ -135,7 +135,7 @@ public class MockProviderService  extends IntentService {
             mLeDeviceListAdapter = new LeDeviceListAdapter();
 
             mGatt_discoverer = new Gatt_discoverer();
-            BTAdapter.startLeScan(mLeScanCallback);
+            //BTAdapter.startLeScan(mLeScanCallback);
             starting = false;
         }
         HasServer = false;
@@ -148,7 +148,7 @@ public class MockProviderService  extends IntentService {
             mHandler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    Log.d(TAG,"TERMINATE");
+                    Log.i(TAG,"TERMINATE");
 
                     mScanning = false;
                     BTAdapter.stopLeScan(mLeScanCallback);
@@ -517,6 +517,16 @@ public class MockProviderService  extends IntentService {
             return;
         }
         mBluetoothGatt.disconnect();
+        close();
+    }
+
+    public void close() {
+        if (mBluetoothGatt == null) {
+            return;
+        }
+        Log.i(TAG, "Closed this GATT");
+        mBluetoothGatt.close();
+        mBluetoothGatt = null;
     }
 
     public boolean connect(final String address) {
