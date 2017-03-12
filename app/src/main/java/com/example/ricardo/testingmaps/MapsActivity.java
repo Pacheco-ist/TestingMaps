@@ -11,7 +11,6 @@ import com.google.android.gms.maps.model.IndoorLevel;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import android.*;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.Intent;
@@ -31,7 +30,6 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.PopupMenu;
 import android.widget.Switch;
-import android.widget.TextView;
 
 import java.util.List;
 
@@ -73,9 +71,7 @@ public class MapsActivity extends AppCompatActivity  implements OnMapReadyCallba
         context = this;
 
         mHandler = new Handler();
-        // *** IMPORTANT ***
-        // MapView requires that the Bundle you pass contain _ONLY_ MapView SDK
-        // objects or sub-Bundles.
+
         Bundle mapViewBundle = null;
         if (savedInstanceState != null) {
             mapViewBundle = savedInstanceState.getBundle(MAPVIEW_BUNDLE_KEY);
